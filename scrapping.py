@@ -65,7 +65,7 @@ def getResultadosRecentes(url):
 
         try:
             allowButton = WebDriverWait(driver, 5).until(
-                EC.presence_of_element_located((By.ID, "CybotCookiebotDialogBodyLevelButtonLevelOptinAllowAll"))
+                EC.presence_of_element_located((By.ID, "CybotCookiebotDialogBodyLevelOptinAllowAll"))
             )
             allowButton.click()
         except:
@@ -108,14 +108,12 @@ def getResultadosRecentes(url):
                         else:
                             resultado = "EMPATE"
                         
-                        jogos.append(f"{dataStr} - {time1} ({score1}) vs {time2} ({score2}) - {resultado} - {event}")
+                        jogos.append((dataStr, time1, score1, time2, score2, event))
 
         if not jogos:
-            jogos.append("Nenhum resultado recente encontrado.")
+            jogos.append(("Nenhum resultado recente encontrado.",))
 
     finally:
         driver.quit()
 
     return jogos
-
-print(getResultadosRecentes('https://www.hltv.org/team/8297/furia#tab-matchesBox'))
