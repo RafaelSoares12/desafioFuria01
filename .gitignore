@@ -16,3 +16,4 @@ venv/
 *.log
 config.json
 secrets.json
+downloaded_files
